@@ -1,0 +1,65 @@
+.container {
+  margin: 100px auto;
+  width: 100%; 
+  display: grid;
+  place-items: center;
+}
+
+.tag-clip-input-wrapper {
+  width: 100%;
+  max-width:540px;
+  height: fit-content;
+  gap: .25rem;
+  flex-wrap: wrap;
+}
+
+.output-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+}
+.serial-clip {
+  width: auto;
+  border-radius: .3125rem;
+  border: 1px solid #ced4da;
+  gap: .25rem;
+  height: 40px;
+}
+.serial-clip > span {
+  padding: .375rem .75rem;
+  display: inline-block;
+  font-size: 1rem;
+  flex-grow: 1;
+}
+.serial-clip > button {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  opacity: .4;
+  transition: opacity .25s;
+}
+
+.serial-clip:hover > button {
+  opacity: 1;
+}
+
+
+.serial-clip > button > i {
+  color: #495057;
+  font-size: 1.125rem;
+  line-height: 40px;
+}
+
+.tag-clip-input-wrapper > textarea {
+  flex-grow: 1;
+  border: none;
+  height: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  padding: .375rem .75rem
+}

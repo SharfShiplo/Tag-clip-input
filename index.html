@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Boilerplate</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="tag-clip-input-wrapper d-flex form-control">
+      
+      <div class="output-wrapper" id="output-clip-wrapper">
+        
+      </div>
+      <textarea placeholder="Type tags here..." id="input-clip-area"></textarea>
+    </div>
+  </div>
+  <script>
+    // all Veraibles
+    let output = [];
+    const inputArea = document.getElementById('input-clip-area');
+    const outputArea = document.getElementById('output-clip-wrapper');
+    const closeIcon = '<i class="fas fa-times"></i>';
+    // add event listener to the text area
+    inputArea.addEventListener("input", (event) => {
+      // console.log("change")
+      if (event.target.value.includes(",")) {
+        let inputs = event.target.value.split(",");
+        for(let item of inputs){
+          if(item && item.trim() !== ''){
+            output.push(item.trim());
+          }
+        }
+        inputArea.value = '';
+        updateUI();
+      }
+    });
+
+    // remove items from the output
+    function removeClip(button) {
+      // Get the index of the button that was clicked
+      const index = button.getAttribute('data-index');
+
+      // Remove the corresponding item from the output array
+      output.splice(index, 1);
+
+      // Update the UI
+      updateUI();
+    }
+
+    // Updating UI As per interactions
+    function updateUI() {
+      let outputContent = '';
+      output.forEach((item, index) => {
+        outputContent += `<div class="serial-clip d-inline-flex justify-content-between align-items-center">
+            <span>${item}</span>
+            <button type="button" class="btn-serial-clip-remove" data-index="${index}" onclick="removeClip(this)">
+              ${closeIcon}
+            </button>
+          </div>`;
+      });
+      outputArea.innerHTML = outputContent;
+    }
+</script>
+
+
+</body>
+</html>
